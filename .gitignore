@@ -1,6 +1,7 @@
 .idea/
 local.properties
-
+.gradle
+build/
 
 # Compiled class file
 *.class
