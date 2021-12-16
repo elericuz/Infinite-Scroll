@@ -6,11 +6,14 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
     @Json
     @GET("character")
-    fun getCharacter(): Deferred<Character>
+    fun getCharacter(
+        @Query("page") page: Int
+    ): Deferred<Character>
 }
 
 object RickAndMortyApi {
