@@ -10,7 +10,7 @@ import com.example.android.infinitescroll.paging.PagingSource
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
-    val listData = Pager(PagingConfig(pageSize = 1)) {
+    val listData = Pager(PagingConfig(pageSize = 20)) {
         PagingSource()
     }.flow.cachedIn(viewModelScope)
 }
