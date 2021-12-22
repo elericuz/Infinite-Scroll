@@ -1,4 +1,4 @@
-package com.example.android.infinitescroll
+package com.example.android.infinitescroll.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

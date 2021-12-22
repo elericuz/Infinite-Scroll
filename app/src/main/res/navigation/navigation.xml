@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainDestination">
+
+    <fragment
+        android:id="@+id/mainDestination"
+        android:name="com.example.android.infinitescroll.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_main_to_detail"
+            app:destination="@id/detailDestination" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDestination"
+        android:name="com.example.android.infinitescroll.main.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="character"
+            app:argType="com.example.android.infinitescroll.models.CharacterData" />
+    </fragment>
+</navigation>

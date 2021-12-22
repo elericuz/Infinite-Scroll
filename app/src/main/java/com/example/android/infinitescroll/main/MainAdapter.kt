@@ -1,4 +1,4 @@
-package com.example.android.infinitescroll
+package com.example.android.infinitescroll.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,10 +6,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.infinitescroll.R
 import com.example.android.infinitescroll.databinding.CharacterBinding
 import com.example.android.infinitescroll.models.CharacterData
 
-class MainAdapter : PagingDataAdapter<CharacterData, MainAdapter.ViewHolder>(DiffCallback) {
+class MainAdapter(private val clickListener: MainClickListener) : PagingDataAdapter<CharacterData, MainAdapter.ViewHolder>(DiffCallback) {
     companion object DiffCallback : DiffUtil.ItemCallback<CharacterData>() {
         override fun areItemsTheSame(oldItem: CharacterData, newItem: CharacterData): Boolean {
             return oldItem.id == newItem.id
@@ -23,6 +24,7 @@ class MainAdapter : PagingDataAdapter<CharacterData, MainAdapter.ViewHolder>(Dif
     inner class ViewHolder(private val binding: CharacterBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(character: CharacterData) {
             binding.characterData = character
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
     }
@@ -38,4 +40,8 @@ class MainAdapter : PagingDataAdapter<CharacterData, MainAdapter.ViewHolder>(Dif
             DataBindingUtil.inflate(inflater, R.layout.character, parent, false)
         return ViewHolder(view)
     }
+}
+
+class MainClickListener(val clickListener: (data: CharacterData) -> Unit) {
+    fun onClick(data: CharacterData) = clickListener(data)
 }
