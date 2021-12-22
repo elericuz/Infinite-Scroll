@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CCE7F3">
+        style="@style/background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="#94CAF4"
+                style="@style/card_background.detail"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -45,8 +45,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_baseline_child_care_24"
-                tools:tint="@color/white" />
+                tools:src="@drawable/ic_baseline_child_care_24" />
 
             <TextView
                 android:id="@+id/textView"
@@ -55,8 +54,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@{character.name}"
                 tools:text="Character Name"
-                android:textColor="#FFE57F"
-                android:textSize="24sp"
+                style="@style/character_name_title_02"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -68,8 +66,7 @@
                 android:layout_marginStart="64dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/gender"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                style="@style/subtitle_02"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -80,8 +77,7 @@
                 android:layout_marginStart="8dp"
                 android:text="@{character.gender}"
                 tools:text="(Fe)Male"
-                android:textColor="#FFE57F"
-                android:textSize="16sp"
+                style="@style/subtitle_03"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="@+id/textView2" />
 
@@ -91,8 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:text="@string/status"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                style="@style/subtitle_02"
                 app:layout_constraintEnd_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
 
@@ -102,8 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="64dp"
                 android:text="@{character.status}"
-                android:textColor="#FFE57F"
-                android:textSize="16sp"
+                style="@style/subtitle_03"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                 app:layout_constraintTop_toTopOf="@+id/textView4"
                 tools:text="Alive?" />
@@ -116,6 +110,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:contentDescription="@string/back_button"
+            style="@style/default_tint"
             android:src="@drawable/ic_baseline_arrow_back_ios_24"
             android:onClick="@{() -> fragment.backButton()}"
             app:layout_constraintStart_toStartOf="parent"
