@@ -15,13 +15,16 @@ interface ApiService {
     @Json
     @GET("character")
     fun getCharacter(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("status") status: String
     ): Deferred<Character>
 }
 
 object RickAndMortyApi {
+    val TAG = "infiniteScroll"
+
     val logger = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-        Log.d("infiniteScroll", it)
+        Log.d(TAG, it)
     })
 
     val client = OkHttpClient.Builder().addInterceptor(logger.setLevel(HttpLoggingInterceptor.Level.BASIC)).build()

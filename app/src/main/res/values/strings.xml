@@ -6,4 +6,6 @@
     <string name="status">Status:</string>
     <string name="character_content_image">%s Image</string>
     <string name="back_button">Back Button</string>
+    <string name="alive">Alive</string>
+    <string name="dead">Dead</string>
 </resources>

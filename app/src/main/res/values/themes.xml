@@ -56,4 +56,9 @@
     <style name="subtitle_03" parent="subtitle_02">
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="button_text_01" parent="body">
+        <item name="android:textColor">@color/green_light</item>
+        <item name="android:textSize">@dimen/subtitle.normal</item>
+    </style>
 </resources>
