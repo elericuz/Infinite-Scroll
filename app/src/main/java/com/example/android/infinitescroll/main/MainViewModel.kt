@@ -7,10 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.example.android.infinitescroll.models.CharacterData
 import com.example.android.infinitescroll.paging.PagingSource
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
     private var _status = MutableLiveData<String>()
@@ -19,17 +21,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private var _toTop = MutableLiveData<Boolean?>()
     val toTop: LiveData<Boolean?> get() = _toTop
 
-    val characterList = MutableStateFlow("")
-    var listData = characterList.flatMapLatest {
-        Pager(
-            config = PagingConfig(
-                pageSize = 20
-            ),
-            pagingSourceFactory = {
-                PagingSource(status = status.value!!)
-            }
-        ).flow.cachedIn(viewModelScope)
-    }
+    var listData: Flow<PagingData<CharacterData>> = emptyFlow()
 
     init {
         _status.value = "alive"
@@ -53,7 +45,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun getCharacters() {
-        listData = Pager(PagingConfig(pageSize = 10), pagingSourceFactory = {
+        listData = Pager(PagingConfig(pageSize = 20), pagingSourceFactory = {
             PagingSource(status.value!!)
         }).flow.cachedIn(viewModelScope)
     }
